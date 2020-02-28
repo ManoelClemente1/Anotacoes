@@ -1,0 +1,91 @@
+Mapeamento objeto relacional: 
+    O banco de dados é com paradigma relacional
+    JPA - Especificação padrao para mapeamento objeto-relacional e persistência de dados (JSR 338)
+    Para implementação usamos Hibernate
+    
+    EntityManager
+        Um Objeto encapsula uma conexão com a base de dados e serve para efeturar operações de acesso a addos.
+    EntityManagerFactory 
+        Utilizado para instanciar o EntityManager
+
+Alteração de porta
+    server.port=${port:8081} no arquivo application.properties
+
+Anotações
+    @Entity: Mapeamento para tornar uma entidade no banco
+    @Controller: É uma especialização da @Component    
+    @RestController: É uma especialização da @Controller e Indica que este controller por padrão responderá usando, por padrão, o formato JSON. @ResponseBody: Converte o valor de resposta em HTTP, indica que a respsota sera em JSON
+    @RequestBody: Indicamos que o objeto usuario tem que ser buscado no corpo da requisição.
+    @Id/@GeneratedValue: O atributo anotado será a primary key da tabela e será gerado automaticamente usando a estratégia IDENTITY.
+    @RequestMapping: Usamos para mapear as urls dos nossos métodos, neste caso, todos os métodos desse controller terão como base o “/usuarios”
+    @Autowired: Com essa anotação indicamos que os parâmetros do nosso construtor serão injetados
+    @PostMapping: Só mapeamos nosso método salvar. Este método será invocado quando a url: /usuarios, usando o método POST for acessada.
+    @Repository: Faz o framework enxergar nossa classe e indicamos que se trata de um repositório, ou seja, uma classe que tem como única função acessar o banco de dados.
+    @Service: Usamos esta anotação para que o framework enxergue nossa classe e indicamos que esta classe é um serviço.
+Padrões de projeto
+    @RequestMapping(method=RequestMethod.GET) - Funciona da mesma forma que o @GetMapping, anotação antiga que atualizaram na versão mais recente do Spring boot. Caso a anotação do método seja @Controller, deve usar o @RequestMethod.
+
+    Organização de pastas e packages
+        Resources - nome padrão onde guardamos controladores REST
+    Nomeclatura: NomeClasseResource
+    Nome do end point no plural
+
+
+    API, REST e RESTFUL
+        API - Conjunto de rotinas e padrões para que outras aplicações possam utilizar as funcionalidades desta aplicação.
+            - Meio de campo entre as tecnologias
+            - Intermediador para troca de informações
+        REST - Boas práticas e obrigações  na transferência de dados.
+             - Transferência de dados geralmente usando protocolo HTTP.
+             - 6 Necessidades 
+                1 - Client-server: cliente e servidor devem estar separados.
+                2 - Stateless: Sem estado, Cada requisição que o cliente faz para o servidor, deverá conter todas as informações necessárias para o servidor entender e responder {Response} a requisição {Request} (Exemplo, a sessão do usuário deverá ser enviado em todas requisições, para saber se aquele usuário está autenticado e apto a usar os serviçoes, e o servidor não pode lembrar que o cliente foi autenticado na requisição anterior. tokens para comunicação).
+                3 - Cacheable: As respostas para uma requisição deverão ser explicitar ao dizer se aquela requisição pode ou não ser cacheada pelo cliente.
+                4 Layered System - O cliente acessa a um endpoint, sem precisar saber da complexidade, de quais passos estão sendo necessários para o servidor responder a requisição, ou quais outras camadas o servidor estará lidando, para que a requisição seja respondida.
+                5 - Code on demand(optional) - Da a possibilidade da nossa aplicação pegar códigos, como javascript, por exemplo, e executar no cliente.
+                6 - Uniform Interface - Além de operações padronizadas, o HTTP fornece um conjunto de respostas para que os clientes (navegadores, APIs, etc) possam saber, de forma adequada, como agir perante uma determinada resposta.
+            GET
+                O método GET é utilizado quando existe a necessidade de se obter um recurso. Ao executar o método GET sob um recurso, uma representação será devolvida pelo servidor.
+
+                Em aplicações Web, normalmente é retornado uma representação HTML.
+
+            POST
+                Utilizamos o método POST quando desejamos criar algum recurso no servidor a partir de uma determinada representação. Exemplo disso é quando fazemos a submissão de algum formulário em uma página Web.
+
+            PUT
+                Semelhante ao método POST, a ideia básica do método PUT é permitir a atualização de um recuso no servidor.
+
+            DELETE
+                Como você já deve estar imaginando, o método DELETE é utilizado com o intuito de remover um recurso em um determinado servidor.
+
+            Respostas
+                Baseado nos métodos que discutimos, o servidor deve processar cada uma das requisições e retornar uma resposta adequada. Veja um resumo de cada uma dessas respostas.
+
+                1XX – Informações Gerais
+                2XX – Sucesso
+                3XX – Redirecionamento
+                4XX – Erro no cliente
+                5XX – Erro no servidor
+
+                Para cada tipo que você pode ver, existe uma série de respostas relacionadas. Por exemplo, se o servidor retornar um “200 OK”, significa que o recurso pedido foi retornado com sucesso.
+
+                Por outro lado, se o servidor retornar um “404 Not Found”, significa que o recurso que estamos pedindo não foi encontrado.
+
+                Apesar de muitas aplicações Web não seguirem o uso adequado de métodos e respostas, devemos sempre que possível, construir nossas aplicações utilizando-as da maneira mais adequada possível.
+
+            Reprentações
+                Em aplicações Web, a representação mais utilizada é o HTML. Essa representação é utilizada como forma de encapsular as informações relacionadas a um determinado recurso.
+
+                Além do HTML, podemos utilizar XML, JSON, ou algum outro formato que melhor atenda o cenário que estamos desenvolvendo.
+
+                É importante citar que um recurso pode ter mais de uma representação, ou seja, podemos construir aplicações que para determinados cenários, retornem representações diferentes, baseado nas necessidades de cada cliente.
+
+        RestFul - Aplicar os padrões REST
+
+HashCode e Equals - Objetos comparados pelo conteúdo e não pelo ponteiro de memória.
+
+Serializable - Indica que uma classe pode ser convertidos para uma sequência de bytes, para que os dados possam ser salvados em arquivos, trafegar em rede.
+
+Optional
+
+
