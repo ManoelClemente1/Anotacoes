@@ -86,6 +86,17 @@ HashCode e Equals - Objetos comparados pelo conteúdo e não pelo ponteiro de me
 
 Serializable - Indica que uma classe pode ser convertidos para uma sequência de bytes, para que os dados possam ser salvados em arquivos, trafegar em rede.
 
-Optional
+ORM - é uma técnica de mapeamento objeto relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam.
 
 
+Estudar 
+    ORM
+    ResponseEntity
+    Collections
+    optional
+    Modelagem relacional
+    @JsonBackReference
+    JsonManagerReference
+    Handler
+    @ControllerAdvice
+    @ExceptionHandler
